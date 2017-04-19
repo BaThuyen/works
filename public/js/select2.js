@@ -1,0 +1,1 @@
+$('[id^="map_categories"]').select2();
