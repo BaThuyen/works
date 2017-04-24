@@ -61,5 +61,9 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'Sites\Controllers\Admin\SiteCategoryController@post'
         ]);
 
+        Route::get('admin/site/categories/crawler', [
+            'as' => 'crawler',
+            'uses' => 'Sites\Controllers\Admin\SiteCategoryController@categoriesCrawler'
+        ]);
     });
 });

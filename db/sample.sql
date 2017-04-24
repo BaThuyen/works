@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2017 at 05:26 AM
+-- Generation Time: Apr 24, 2017 at 10:32 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -273,7 +273,8 @@ CREATE TABLE `sites` (
 --
 
 INSERT INTO `sites` (`site_id`, `site_name`, `site_url`, `site_url_category`, `site_image`, `site_status`) VALUES
-(2, 'Careerlink', 'https://www.careerlink.vn/', NULL, 'http://dev.local/photos/58e1fb049baca.png', 1);
+(2, 'Careerlink', 'https://www.careerlink.vn/', NULL, 'http://dev.local/photos/58e1fb049baca.png', 1),
+(3, 'Vietnamwork', 'https://www.vietnamworks.com/tim-viec-lam', NULL, 'http://dev.local/photos/58f8059bb2753.png', 1);
 
 -- --------------------------------------------------------
 
@@ -286,6 +287,7 @@ CREATE TABLE `sites_categories` (
   `site_category_id` int(10) UNSIGNED NOT NULL,
   `site_id` int(11) NOT NULL,
   `site_category_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `site_category_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `site_category_status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -293,10 +295,69 @@ CREATE TABLE `sites_categories` (
 -- Dumping data for table `sites_categories`
 --
 
-INSERT INTO `sites_categories` (`site_category_id`, `site_id`, `site_category_name`, `site_category_status`) VALUES
-(1, 1, 'name', 1),
-(2, 2, 'site category 2', 1),
-(3, 1, 'name2', 1);
+INSERT INTO `sites_categories` (`site_category_id`, `site_id`, `site_category_name`, `site_category_url`, `site_category_status`) VALUES
+(330, 2, 'Bán hàng', 'https://www.careerlink.vn/viec-lam/ban-hang/31', 1),
+(331, 2, 'Bán lẻ/ Bán sỉ', 'https://www.careerlink.vn/viec-lam/ban-le-ban-si/190', 1),
+(332, 2, 'Báo chí/ Biên tập viên/ Xuất bản', 'https://www.careerlink.vn/viec-lam/bao-chi-bien-tap-vien-xuat-ban/24', 1),
+(333, 2, 'Bảo hiểm', 'https://www.careerlink.vn/viec-lam/bao-hiem/17', 1),
+(334, 2, 'Bất động sản', 'https://www.careerlink.vn/viec-lam/bat-dong-san/29', 1),
+(335, 2, 'Biên phiên dịch/ Thông dịch viên', 'https://www.careerlink.vn/viec-lam/bien-phien-dich-thong-dich-vien/18', 1),
+(336, 2, 'Biên phiên dịch', 'https://www.careerlink.vn/viec-lam/bien-phien-dich-tieng-nhat/154', 1),
+(337, 2, 'Chăm sóc sức khỏe/ Y tế', 'https://www.careerlink.vn/viec-lam/cham-soc-suc-khoe-y-te/14', 1),
+(338, 2, 'CNTT - Phần cứng/ Mạng', 'https://www.careerlink.vn/viec-lam/cntt-phan-cung-mang/130', 1),
+(339, 2, 'CNTT - Phần mềm', 'https://www.careerlink.vn/viec-lam/cntt-phan-mem/19', 1),
+(340, 2, 'Dầu khí/ Khoáng sản', 'https://www.careerlink.vn/viec-lam/dau-khi-khoang-san/26', 1),
+(341, 2, 'Dệt may/ Da giày', 'https://www.careerlink.vn/viec-lam/det-may-da-giay/33', 1),
+(342, 2, 'Dịch vụ khách hàng', 'https://www.careerlink.vn/viec-lam/dich-vu-khach-hang/9', 1),
+(343, 2, 'Dược/ Sinh học', 'https://www.careerlink.vn/viec-lam/duoc-sinh-hoc/28', 1),
+(344, 2, 'Điện/ Điện tử', 'https://www.careerlink.vn/viec-lam/dien-dien-tu/148', 1),
+(345, 2, 'Giáo dục/ Đào tạo/ Thư viện', 'https://www.careerlink.vn/viec-lam/giao-duc-dao-tao-thu-vien/10', 1),
+(346, 2, 'Hàng gia dụng', 'https://www.careerlink.vn/viec-lam/hang-gia-dung/189', 1),
+(347, 2, 'Hóa chất/ Sinh hóa/ Thực phẩm', 'https://www.careerlink.vn/viec-lam/hoa-chat-sinh-hoa-thuc-pham/127', 1),
+(348, 2, 'Kế toán/ Tài chính/ Kiểm toán', 'https://www.careerlink.vn/viec-lam/ke-toan-tai-chinh-kiem-toan/1', 1),
+(349, 2, 'Khách sạn/ Du lịch', 'https://www.careerlink.vn/viec-lam/khach-san-du-lich/15', 1),
+(350, 2, 'Kiến trúc', 'https://www.careerlink.vn/viec-lam/kien-truc/139', 1),
+(351, 2, 'Kỹ thuật ứng dụng/ Cơ khí', 'https://www.careerlink.vn/viec-lam/ky-thuat-ung-dung-co-khi/11', 1),
+(352, 2, 'Lao động phổ thông', 'https://www.careerlink.vn/viec-lam/lao-dong-pho-thong/20', 1),
+(353, 2, 'Môi trường/ Xử lý chất thải', 'https://www.careerlink.vn/viec-lam/moi-truong-xu-ly-chat-thai/142', 1),
+(354, 2, 'Mới tốt nghiệp/ Thực tập', 'https://www.careerlink.vn/viec-lam/moi-tot-nghiep-thuc-tap/118', 1),
+(355, 2, 'Ngân hàng/ Chứng khoán/ Đầu tư', 'https://www.careerlink.vn/viec-lam/ngan-hang-chung-khoan-dau-tu/5', 1),
+(356, 2, 'Nghệ thuật/ Thiết kế/ Giải trí', 'https://www.careerlink.vn/viec-lam/nghe-thuat-thiet-ke-giai-tri/4', 1),
+(357, 2, 'Người nước ngoài', 'https://www.careerlink.vn/viec-lam/nguoi-nuoc-ngoai/12', 1),
+(358, 2, 'Nhà hàng/ Dịch vụ ăn uống', 'https://www.careerlink.vn/viec-lam/nha-hang-dich-vu-an-uong/30', 1),
+(359, 2, 'Nhân sự', 'https://www.careerlink.vn/viec-lam/nhan-su/16', 1),
+(360, 2, 'Nông nghiệp/ Lâm nghiệp', 'https://www.careerlink.vn/viec-lam/nong-nghiep-lam-nghiep/3', 1),
+(361, 2, 'Ô tô', 'https://www.careerlink.vn/viec-lam/o-to/151', 1),
+(362, 2, 'Pháp lý/ Luật', 'https://www.careerlink.vn/viec-lam/phap-ly-luat/21', 1),
+(363, 2, 'Phi chính phủ/ Phi lợi nhuận', 'https://www.careerlink.vn/viec-lam/phi-chinh-phu-phi-loi-nhuan/25', 1),
+(364, 2, 'Quản lý chất lượng', 'https://www.careerlink.vn/viec-lam/quan-ly-chat-luong-qa-qc/145', 1),
+(365, 2, 'Quản lý điều hành', 'https://www.careerlink.vn/viec-lam/quan-ly-dieu-hanh/22', 1),
+(366, 2, 'Quảng cáo/ Khuyến mãi/ Đối ngoại', 'https://www.careerlink.vn/viec-lam/quang-cao-khuyen-mai-doi-ngoai/2', 1),
+(367, 2, 'Sản xuất/ Vận hành sản xuất', 'https://www.careerlink.vn/viec-lam/san-xuat-van-hanh-san-xuat/23', 1),
+(368, 2, 'Thư ký/ Hành chánh', 'https://www.careerlink.vn/viec-lam/thu-ky-hanh-chanh/6', 1),
+(369, 2, 'Tiếp thị', 'https://www.careerlink.vn/viec-lam/tiep-thi/136', 1),
+(370, 2, 'Tư vấn', 'https://www.careerlink.vn/viec-lam/tu-van/7', 1),
+(371, 2, 'Vận chuyển/ Giao thông/ Kho bãi', 'https://www.careerlink.vn/viec-lam/van-chuyen-giao-thong-kho-bai/34', 1),
+(372, 2, 'Vật tư/ Mua hàng', 'https://www.careerlink.vn/viec-lam/vat-tu-mua-hang/27', 1),
+(373, 2, 'Viễn Thông', 'https://www.careerlink.vn/viec-lam/vien-thong/32', 1),
+(374, 2, 'Xây dựng', 'https://www.careerlink.vn/viec-lam/xay-dung/8', 1),
+(375, 2, 'Xuất nhập khẩu/ Ngoại thương', 'https://www.careerlink.vn/viec-lam/xuat-nhap-khau-ngoai-thuong/13', 1),
+(376, 2, 'Khác', 'https://www.careerlink.vn/viec-lam/khac/35', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sites_works`
+--
+
+DROP TABLE IF EXISTS `sites_works`;
+CREATE TABLE `sites_works` (
+  `work_id` int(11) NOT NULL,
+  `work_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `work_category` int(11) NOT NULL,
+  `work_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `work_description` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -393,8 +454,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `banned`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `protected`, `created_at`, `updated_at`) VALUES
-(1, 'admin@admin.com', '$2y$10$r94SZPvdNI2VAVFdEd.aSeD0hIFv2t8ht/RTDkZ7xsm1iHLRnQKtS', NULL, 1, 0, NULL, NULL, '2017-04-18 18:26:24', '$2y$10$MYZnhrbeOUX2WfHTnoJ6rOVS2XMYMYrIEydrytBGqKBGzLWjox.Y2', NULL, 0, '2017-03-06 02:02:20', '2017-04-18 18:26:24'),
-(2, 'ginzkel@gmail.com', '$2y$10$r94SZPvdNI2VAVFdEd.aSeD0hIFv2t8ht/RTDkZ7xsm1iHLRnQKtS', NULL, 1, 0, NULL, NULL, '2017-04-11 18:05:25', '$2y$10$xsbUZ.Q82Yra8VOdUTzRw.w4n32iteJ/x9gE0jnLBLvGcI/c57Nd.', NULL, 0, '2017-03-06 02:02:20', '2017-04-11 18:05:25');
+(1, 'admin@admin.com', '$2y$10$r94SZPvdNI2VAVFdEd.aSeD0hIFv2t8ht/RTDkZ7xsm1iHLRnQKtS', NULL, 1, 0, NULL, NULL, '2017-04-23 23:06:40', '$2y$10$ojzEgbT/2DACELuesPHHzeLBPwOSTICltwMPS1/vw54W051Q7xks.', NULL, 0, '2017-03-06 02:02:20', '2017-04-23 23:06:40'),
+(2, 'ginzkel@gmail.com', '$2y$10$r94SZPvdNI2VAVFdEd.aSeD0hIFv2t8ht/RTDkZ7xsm1iHLRnQKtS', NULL, 1, 0, NULL, NULL, '2017-04-24 01:02:13', '$2y$10$UmxGenkdPip4Heppr/fVze9iREdnb9KGToHmQFpjcff5LP/UWr12O', NULL, 0, '2017-03-06 02:02:20', '2017-04-24 01:02:13');
 
 -- --------------------------------------------------------
 
@@ -576,7 +637,15 @@ ALTER TABLE `sites`
 -- Indexes for table `sites_categories`
 --
 ALTER TABLE `sites_categories`
-  ADD PRIMARY KEY (`site_category_id`);
+  ADD PRIMARY KEY (`site_category_id`),
+  ADD UNIQUE KEY `site_category_url` (`site_category_url`);
+
+--
+-- Indexes for table `sites_works`
+--
+ALTER TABLE `sites_works`
+  ADD PRIMARY KEY (`work_id`),
+  ADD UNIQUE KEY `work_url` (`work_url`);
 
 --
 -- Indexes for table `templates`
@@ -678,12 +747,17 @@ ALTER TABLE `samples`
 -- AUTO_INCREMENT for table `sites`
 --
 ALTER TABLE `sites`
-  MODIFY `site_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `site_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sites_categories`
 --
 ALTER TABLE `sites_categories`
-  MODIFY `site_category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `site_category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=632;
+--
+-- AUTO_INCREMENT for table `sites_works`
+--
+ALTER TABLE `sites_works`
+  MODIFY `work_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `templates`
 --

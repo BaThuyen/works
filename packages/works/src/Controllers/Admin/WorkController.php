@@ -173,23 +173,6 @@ class WorkController extends WorkAdminController {
         return Redirect::route("admin_work");
     }
 
-    public function categoriesCrawler(Request $request) {
-        $guzzleClient = new GuzzleClient(['base_uri' => 'https://www.vietnamworks.com', 'verify' => false]);
-        $client = new GouteClient();
-        $client->setClient($guzzleClient);
-        $crawler = $client->request('GET', 'https://www.vietnamworks.com/tim-viec-lam');
-        $total = $crawler->filter('div.list-simple')->each(function($node) {
-            $temp = $node->filter('ul > li')->each(function($node){
-                print $node->filter('a')->text()."<br>";
-                $sum = intval(substr($node->filter('em')->text(), 1, strpos($node->filter('em')->text(), ')') - 1));
-                return $sum;
-            });
-            return array_sum($temp);
-        });
-        print "<h1>".array_sum($total)."<h1>";
-        die();
-        $url = array_filter($url);
-        return $url[1];
-    }
+    
 
 }

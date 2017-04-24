@@ -91,9 +91,6 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'work_template.list',
             'uses' => 'Works\Controllers\Admin\TemplateController@index'
         ]);
-        Route::get('admin/work/crawler', [
-            'as' => 'crawler',
-            'uses' => 'Works\Controllers\Admin\WorkController@categoriesCrawler'
-        ]);
+        
     });
 });
