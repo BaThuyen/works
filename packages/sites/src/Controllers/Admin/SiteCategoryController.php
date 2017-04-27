@@ -130,37 +130,29 @@ class SiteCategoryController extends AdminController {
             $input['site_category_url'] = $node->filter('a')->link()->getUri();
             $category = $this->obj_site_categories->add_category($input);
             $nextpage = true;
-            $url = $input['site_category_url'];
-            $count = 0;
+            $baseurl = $input['site_category_url'];
+            $url = $baseurl."?page=1";
+            $page = 1;
             while ($nextpage) {
                 $crawler = $client->request('GET', $url);
-                $crawler->filter('.list-group-item')->each(function($node) use ($client, $category, $count) {
+                $crawler->filter('.list-group-item')->each(function($node) use ($client, $category) {
                     $work = array();
                     if (count($node->filter('h2')) > 0) {
-                        $count++;
-                        var_dump($count);
                         $work['work_name'] = trim($node->filter('h2')->text());
                         $work['work_category'] = $category->site_category_id;
                         $work['work_url'] = $node->filter('h2 > a')->link()->getUri();
                         $crawler = $client->request('GET', $work['work_url']);
                         $work['work_description'] = $crawler->filter('.job-data')->html();
-                        //var_dump($work); 
                         $this->obj_site_works->add_work($work);
                     }
                 });
                 if (count($crawler->filter('.pagination > li > a > .sr-only')) > 0) {
-                    $crawler->filter('.pagination > li > a')->each(function($node) use ($url){
-                        if (count($node->filter('.sr-only')) > 0) {
-                            $url = $node->link()->getUri();
-                        }
-                    });
-                    $nextpage = true;
+                    $page++;
+                    $url = $baseurl."?page=$page";
                 } else {
                     $nextpage = false;
                 }
             }
-
-            die();
         });
         return Redirect::route("admin_site");
     }

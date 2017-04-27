@@ -38,7 +38,6 @@ class SitesWorks extends Model {
             $work->work_category = $input['work_category'];
             $work->work_description = $input['work_description'];
             $work->save();
-            
         }
     }
 
