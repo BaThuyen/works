@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompaniesTable extends Migration {
+class CreateLocationTable extends Migration {
 
     private $_table = NULL;
     private $fileds = NULL;
 
     public function __construct() {
-        $this->_table = 'companies';
+        $this->_table = 'locations';
     }
 
     /**
@@ -27,8 +27,7 @@ class CreateCompaniesTable extends Migration {
         
         if (!Schema::hasTable($this->_table)) {
             Schema::create($this->_table, function (Blueprint $table) {
-                $table->increments('company_id');
-                $table->string('company_name');
+                $table->increments('location_id');
             });
         }
         
@@ -40,40 +39,30 @@ class CreateCompaniesTable extends Migration {
         //site_id
 
         
-        if (!Schema::hasColumn($this->_table, 'company_id')) {
+        if (!Schema::hasColumn($this->_table, 'Location_id')) {
             Schema::table($this->_table, function (Blueprint $table) {
-                $table->increments('company_id');
+                $table->increments('location_id');
             });
         }
         
         //site_name
-        if (!Schema::hasColumn($this->_table, 'company_name')) {
+        if (!Schema::hasColumn($this->_table, 'location_name')) {
             Schema::table($this->_table, function (Blueprint $table) {
-                $table->string('company_name', 255);
+                $table->string('location_name', 255);
             });
         }
         
-        if (!Schema::hasColumn($this->_table, 'company_address')) {
-            Schema::table($this->_table, function (Blueprint $table) {
-                $table->string('company_address');
-            });
-        }
-        
-        if (!Schema::hasColumn($this->_table, 'company_location')) {
-            Schema::table($this->_table, function (Blueprint $table) {
-                $table->integer('company_location');
-            });
-        }
-        if (!Schema::hasColumn($this->_table, 'company_description')) {
-            Schema::table($this->_table, function (Blueprint $table) {
-                $table->string('company_description')->nullable(true);
-            });
-        }
-
         //status_id
-        if (!Schema::hasColumn($this->_table, 'company_status')) {
+        if (!Schema::hasColumn($this->_table, 'location_id_alias')) {
             Schema::table($this->_table, function (Blueprint $table) {
-                $table->integer('company_status')->default(1);
+                $table->integer('location_id_alias')->default(0);
+            });
+        }
+        
+        
+         if (!Schema::hasColumn($this->_table, 'location_status')) {
+            Schema::table($this->_table, function (Blueprint $table) {
+                $table->integer('location_status')->default(0);
             });
         }
          
@@ -85,7 +74,7 @@ class CreateCompaniesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('locations');
     }
 
 }
